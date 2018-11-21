@@ -30,74 +30,15 @@ We will use Azure COntainer Registry to build our containers from Dockerfiles an
     
 5. Verify your subscription is correctly selected as the default
     ```
-    az account list
+    az account list -o table
     ```
 
-6. Find your RG name
-
-    ```
-    az group list 
-    ```
-    
-    ```
-
-    [
-    {
-        "id": "/subscriptions/b23accae-e655-44e6-a08d-85fb5f1bb854/resourceGroups/ODL-aks-v2-gbb-8386",
-        "location": "centralus",
-        "managedBy": null,
-        "name": "ODL-aks-v2-gbb-8386",
-        "properties": {
-        "provisioningState": "Succeeded"
-        },
-        "tags": {
-        "AttendeeId": "8391",
-        "LaunchId": "486",
-        "LaunchType": "ODL",
-        "TemplateId": "1153"
-        }
-    }
-    ]
-
-    # copy the name from the results above and set to a variable 
-    
-    RG_NAME=
 
 For the first container, we will be creating a Dockerfile from scratch. For the other containers, the Dockerfiles are provided.
 
 ### Web Container
 
-1. Create a Dockerfile
-
-    * Access the cloud shell
-    * In the `~/blackbelt-aks-hackfest/app/web` directory, add a file called "Dockerfile"
-        * you can launch in in-browser code editor in cloud shell by typing `code .` at the bash prompt
-
-    * Add the following lines and save:
-
-        ```
-        FROM node:9.4.0-alpine
-
-        ARG VCS_REF
-        ARG BUILD_DATE
-        ARG IMAGE_TAG_REF
-
-        ENV GIT_SHA $VCS_REF
-        ENV IMAGE_BUILD_DATE $BUILD_DATE
-        ENV IMAGE_TAG $IMAGE_TAG_REF
-
-        WORKDIR /usr/src/app
-        COPY package*.json ./
-        RUN npm install
-
-        COPY . .
-        RUN apk --no-cache add curl
-        EXPOSE 8080
-
-        CMD [ "npm", "run", "container" ]
-        ```
-
-2. Create a container image for the node.js Web app
+1. Create a container image for the node.js Web app
 
     From the terminal session: 
 
