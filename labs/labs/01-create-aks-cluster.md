@@ -35,14 +35,9 @@
     export NAME=kube-lab
 
 
-8. Create your AKS cluster in the resource group created above with 2 nodes, targeting Kubernetes version 1.11.2
+8. Create your AKS cluster in the resource group created above with 2 nodes, targeting Kubernetes version 1.11.3
     ```
-    # This command can take 5-25 minutes to run as it is creating the AKS cluster. Please be PATIENT...
-    
-    # set the location to one of the provided AKS locations (eg - centralus, eastus)
-    LOCATION=
-
-    az aks create -n aks-lab -g kube-lab -c 2 -k 1.11.2 --generate-ssh-keys -l eastus --nowait
+    az aks create -n aks-lab -g kube-lab -c 2 -k 1.11.3 --generate-ssh-keys -l eastus 
     ```
 
 **Continue to the next lab whilst the AKS cluster is being created**

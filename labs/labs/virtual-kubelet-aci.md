@@ -14,33 +14,6 @@ To [use Virtual Kubelet with AKS](https://docs.microsoft.com/en-us/azure/aks/vir
 - Azure CLI version 2.0.33 or later
 - Helm installed, [if not checkout Lab 6](https://github.com/mathieu-benoit/blackbelt-aks-hackfest/blob/k8s-1-10-6/labs/day1-labs/06-monitoring-k8s.md#install-helm)
 
-### Create a Resource Group for ACI
-
-To use Azure Container Instances, you must provide a resource group. We will use the existing Resource Group you were assigned.
-
-```console
-az group list
-```
-Output:
-```
-[
-    {
-        "id": "/subscriptions/b23accae-e655-44e6-a08d-85fb5f1bb854/resourceGroups/ODL-aks-v2-gbb-8386",
-        "location": "centralus",
-        "managedBy": null,
-        "name": "ODL-aks-v2-gbb-8386",
-        "properties": {
-        "provisioningState": "Succeeded"
-        },
-        "tags": {
-        "AttendeeId": "8391",
-        "LaunchId": "486",
-        "LaunchType": "ODL",
-        "TemplateId": "1153"
-        }
-    }
-    ]
-```
 
 Copy the name from the results above and set to a variable:
 ```
