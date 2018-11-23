@@ -15,25 +15,6 @@ We will use Azure COntainer Registry to build our containers from Dockerfiles an
 
     > The Standard registry offers the same capabilities as Basic, but with increased storage limits and image throughput. Standard registries should satisfy the needs of most production scenarios.
 
-1. Open the Azure Cloud Shell
-
-    ![Azure Cloud Shell](img/cloudshell.png "Azure Cloud Shell")
-
-2. The first time Cloud Shell is started will require you to create a storage account. In our lab, you must click `Advanced` and enter an account name and share.
-
-3. Once your cloud shell is started, clone the workshop repo into the cloud shell environment
-    ```
-    git clone https://github.com/justindavies/blackbelt-aks-hackfest.git
-    ```
-
-4. In the cloud shell, you are automatically logged into your Azure subscription. ```az login``` is not required.
-    
-5. Verify your subscription is correctly selected as the default
-    ```
-    az account list -o table
-    ```
-
-
 For the first container, we will be creating a Dockerfile from scratch. For the other containers, the Dockerfiles are provided.
 
 ### Web Container
@@ -47,7 +28,7 @@ For the first container, we will be creating a Dockerfile from scratch. For the 
     
     # Set environment variable for ACR Name
     ACR_NAME=<registry-name>
-    az acr build --registry $ACR_NAME --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg IMAGE_TAG_REF=v1 --image azureworkshop/rating-web:v1 .
+    az acr build --registry $ACR_NAME --image azureworkshop/rating-web:v1 .
     
     ```
     1. Return to the Azure Portal in your browser and validate that the image appears in your Container Registry under the "Repositories" area.

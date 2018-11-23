@@ -29,25 +29,11 @@ In this lab, we will make a change to the web application and then re-deploy the
 3. Create a new image with an updated image tag
 
     ```
-    docker build -t rating-web:new-version .
+    ACR_NAME=<registry-name>
+    az acr build --registry $ACR_NAME --image azureworkshop/rating-web:new-version .
     ```
 
-4. Tag the new image and push to your Azure Container Registry
-
-    ```
-    # you may need to login again to your ACR. set these values to yours
-    ACR_SERVER=
-    ACR_USER=
-    ACR_PWD=
-
-    docker login --username $ACR_USER --password $ACR_PWD $ACR_SERVER
-
-    docker tag rating-web:new-version $ACR_SERVER/azureworkshop/rating-web:new-version
-    
-    docker push $ACR_SERVER/azureworkshop/rating-web:new-version
-    ```
-
-5. Verify image was pushed to ACR by checking your registry in the Azure Portal
+4. Verify image was pushed to ACR by checking your registry in the Azure Portal
 
 ## Update kubernetes deployment
 
